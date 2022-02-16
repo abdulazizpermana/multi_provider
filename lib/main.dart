@@ -14,14 +14,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<WeightProvider>(
-      create: (context) => WeightProvider(),
-      child: ChangeNotifierProvider<HeighttProvider>(
-        create: (context) => HeighttProvider(),
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: HomePage(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<WeightProvider>(
+          create: (context) => WeightProvider(),
         ),
+        ChangeNotifierProvider<HeighttProvider>(
+          create: (context) => HeighttProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomePage(),
       ),
     );
   }
